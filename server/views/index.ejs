@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>My Website</title>
+   </head>
+   <body>
+      <% include('header') %>
+
+      <main>
+         <h2>Content from EJS file</h2>
+         <p>This is the main content of the page, rendered from an EJS file.</p>
+      </main>
+
+      <div id="app"></div>
+
+      <% include('footer') %>
+   </body>
+
+   <% if (process.env.NODE_ENV === 'development') { %>
+   <script type="module" src="http://localhost:5173/src/index.js"></script>
+
+   <% } else { %>
+   <script type="module" src="/src/index.js"></script>
+
+   <% } %>
+</html>
