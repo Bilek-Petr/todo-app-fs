@@ -1,36 +1,31 @@
 <ul class="tasks">
-   <li class="tasks__item">
+   <% todos.forEach(function(todo) { %>
+   <li class="tasks__item" id="<%= todo._id %>">
       <div class="tasks__content">
-         <input class="tasks__checkbox" type="checkbox" name="task-name" id="task_1" />
-         <span class="tasks__text" contenteditable>task content 1</span>
+         <input
+            class="tasks__checkbox"
+            type="checkbox"
+            name="task-name"
+            id="<%=todo._id %>"
+         />
+         <span class="tasks__text" contenteditable><%= todo.task %></span>
       </div>
    </li>
-   <li class="tasks__item">
-      <div class="tasks__content">
-         <input class="tasks__checkbox" type="checkbox" name="task-name" id="task_2" />
-         <span class="tasks__text" contenteditable>task content 2</span>
+   <% }); %>
+
+   <div class="stats">
+      <div class="stats__left">
+         <span class="stats__count">4</span>
+         <span>items left</span>
       </div>
-   </li>
-   <li class="tasks__item">
-      <div class="tasks__content">
-         <input class="tasks__checkbox" type="checkbox" name="task-name" id="task_3" />
-         <span class="tasks__text" contenteditable>task content 3</span>
+      <span class="stats__clear">Clear completed</span>
+   </div>
+
+   <div class="controls">
+      <div class="controls__filters">
+         <button class="controls__btn" id="all" type="button">All</button>
+         <button class="controls__btn" id="active" type="button">Active</button>
+         <button class="controls__btn" id="completed" type="button">Completed</button>
       </div>
-   </li>
+   </div>
 </ul>
-
-<div class="stats">
-   <div class="stats__left">
-      <span class="stats__count">4</span>
-      <span>items left</span>
-   </div>
-   <span class="stats__clear">Clear completed</span>
-</div>
-
-<div class="controls">
-   <div class="controls__filters">
-      <button class="controls__btn" id="all" type="button">All</button>
-      <button class="controls__btn" id="active" type="button">Active</button>
-      <button class="controls__btn" id="completed" type="button">Completed</button>
-   </div>
-</div>
