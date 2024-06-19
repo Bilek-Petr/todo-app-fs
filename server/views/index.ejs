@@ -6,23 +6,24 @@
       <title>My Website</title>
    </head>
    <body>
-      <% include('header') %>
+      <div class="container">
+         <!-- HEADER START -->
+         <%- include('partials/header') %>
+         <!-- HEADER END -->
 
-      <main>
-         <h2>Content from EJS file</h2>
-         <p>This is the main content of the page, rendered from an EJS file.</p>
-      </main>
+         <!-- MAIN START -->
+         <main><%- include('partials/form') %></main>
+         <!-- MAIN END -->
 
-      <div id="app"></div>
-
-      <% include('footer') %>
+         <%- include('partials/footer') %>
+      </div>
    </body>
 
    <% if (process.env.NODE_ENV === 'development') { %>
    <script type="module" src="http://localhost:5173/src/index.js"></script>
 
    <% } else { %>
-   <script type="module" src="/src/index.js"></script>
+   <script type="module" src="http://localhost:5173/src/index.js"></script>
 
    <% } %>
 </html>
