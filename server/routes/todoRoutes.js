@@ -21,6 +21,6 @@ router.put('/:id', updateTodo);
 router.delete('/:id', deleteTodo);
 
 // Route to fetch todos from API
-router.get('/fetch-todos-from-api', getTodosFromDB);
+// router.get('/fetch-todos-from-api', getTodosFromDB);
 
 module.exports = router;
