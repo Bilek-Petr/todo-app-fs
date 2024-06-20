@@ -1,0 +1,15 @@
+@mixin apply-theme($theme) {
+   :root {
+      @each $property, $value in $theme {
+         --#{$property}: #{$value};
+      }
+   }
+}
+
+@mixin custom-input($border-radius) {
+   background-color: var(--input-bg);
+   width: 100%;
+   border: none;
+   border-radius: $border-radius;
+   padding: 1rem;
+}

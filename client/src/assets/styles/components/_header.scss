@@ -1,0 +1,29 @@
+.header {
+   background-image: var(--header-bg);
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+
+.header__top {
+   display: flex;
+   justify-content: space-between;
+   margin-bottom: 2rem;
+}
+
+.header__title {
+   color: var(--heading-color);
+   font-size: clamp(1.5rem, 3vw, 2rem);
+   font-weight: $fw-thick;
+   text-transform: uppercase;
+   letter-spacing: 8px;
+}
+
+.header__btn-theme {
+   cursor: pointer;
+   @extend %transparent;
+}
+
+// HEADER INPUT
+.header__input {
+   @include custom-input(10px);
+}

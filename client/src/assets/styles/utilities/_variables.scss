@@ -1,0 +1,39 @@
+// Light Theme Variables
+$theme-light: (
+   'body-bg': hsl(236, 33%, 92%),
+   'header-bg': url('/assets/images/bg-mobile-light.jpg'),
+   'header-bg-desktop': url('/assets/images/bg-mobile-light.jpg'),
+   'heading-color': hsl(0, 0%, 98%),
+   'input-bg': hsl(0, 0%, 98%),
+   'input-color': hsl(234, 39%, 85%),
+   'task-color': hsl(235, 19%, 35%),
+   'complete-task-color': hsl(236, 9%, 61%),
+   'border-bottom-color': hsl(233, 11%, 84%),
+   'btn-border': hsl(233, 11%, 84%),
+   'remove-task-hover': hsl(235, 19%, 35%),
+   'filter-task-hover': hsl(235, 19%, 35%),
+   'drag-text-color': hsl(236, 9%, 61%),
+);
+
+// Dark Theme Variables
+$theme-dark: (
+   'body-bg': hsl(235, 21%, 11%),
+   'header-bg': url('/assets/images/bg-mobile-dark.jpg'),
+   'header-bg-desktop': url('/assets/images/bg-desktop-dark.jpg'),
+   'heading-color': hsl(236, 33%, 92%),
+   'input-bg': hsl(235, 24%, 19%),
+   'input-color': hsl(234, 39%, 85%),
+   'task-color': hsl(234, 39%, 85%),
+   'complete-task-color': hsl(234, 11%, 52%),
+   'border-bottom-color': hsl(237, 14%, 26%),
+   'btn-border': hsl(234, 11%, 52%),
+   'remove-task-hover': hsl(236, 33%, 92%),
+   'filter-task-hover': hsl(234, 39%, 85%),
+   'drag-text-color': hsl(237, 14%, 26%),
+);
+
+// Typography
+$ff-body: 'Josefin Sans', sans-serif; // Font Family
+$fs-body: 18px; // Font Size
+$fw-thick: 700; // Font Weight - Thick
+$fw-thin: 400; // Font Weight - Thin

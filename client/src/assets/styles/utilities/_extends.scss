@@ -1,0 +1,17 @@
+%transparent {
+   background: transparent;
+   border: none;
+}
+
+%text-sum-tasks {
+   padding: 0.5rem 0;
+   color: var(--drag-text-color);
+   font-size: clamp(0.7rem, 3vw, 1rem);
+   font-weight: $fw-thick;
+}
+
+%flex-center {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}

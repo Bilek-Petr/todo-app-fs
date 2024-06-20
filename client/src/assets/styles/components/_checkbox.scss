@@ -1,0 +1,53 @@
+//checkbox
+input[type='checkbox'] {
+   position: relative;
+   width: 1.5rem;
+   height: 1.5rem;
+   appearance: none;
+   -webkit-appearance: none;
+   outline: none;
+   border: 1px solid var(--btn-border);
+   border-radius: 100%;
+   cursor: pointer;
+   transition: all 0.2s ease-in-out;
+   @extend %flex-center;
+}
+
+input[type='checkbox']::before {
+   content: '\2713'; // Unicode checkmark
+   color: #fff;
+   font-size: 0.75rem;
+   width: 50%;
+   height: 50%;
+   transform: scale(0);
+   position: absolute;
+   z-index: 2;
+   transform: translate(-50%, -50%) scale(0);
+   @extend %flex-center;
+}
+
+input[type='checkbox']::after {
+   content: '';
+   width: 103%; //due to weird gap between inner part and border-color
+   height: 103%;
+   border-radius: inherit;
+   background-image: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+   position: absolute;
+   top: -1;
+   left: -1;
+   opacity: 0;
+}
+
+input[type='checkbox']:checked::before {
+   transform: scale(1);
+}
+
+input[type='checkbox']:checked::after {
+   opacity: 1;
+}
+
+input[type='checkbox']:hover {
+   border-color: transparent;
+   background: linear-gradient(hsl(0, 0%, 98%), hsl(0, 0%, 98%)) padding-box,
+      linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%)) border-box;
+}

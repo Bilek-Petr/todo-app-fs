@@ -1,0 +1,87 @@
+.tasks {
+   position: relative;
+   bottom: 4.5rem;
+}
+
+.tasks__item {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+
+   @include custom-input(0px);
+   border-bottom: 1px solid var(--body-bg);
+}
+
+.tasks__item:first-of-type {
+   border-radius: 10px 10px 0 0;
+}
+
+.tasks__content {
+   display: flex;
+   align-items: center;
+   gap: 0.5rem;
+}
+
+.tasks__text {
+   padding-top: 0.2rem;
+   font-size: clamp(0.7rem, 3vw, 1rem);
+   font-weight: 700;
+   color: var(--task-color);
+}
+
+.tasks__remove-btn {
+   width: 1.75rem;
+   cursor: pointer;
+   @extend %transparent;
+}
+
+.tasks__remove-btn svg {
+   padding-top: 0.5rem;
+   fill: var(--remove-task-hover);
+   transition: transform 0.2s ease;
+
+   &:hover,
+   &:focus {
+      transform: scale(1.25);
+   }
+}
+//STATS
+
+.stats {
+   display: flex;
+   justify-content: space-between;
+   box-shadow: 0px 9px 3px -4px rgba(0, 0, 0, 0.16);
+
+   @extend %text-sum-tasks;
+   @include custom-input(0px 0px 10px 10px);
+}
+
+//CONTROL BUTTONS
+
+.controls {
+   margin-top: 2rem;
+   box-shadow: 0px 9px 3px -4px rgba(0, 0, 0, 0.16);
+
+   @include custom-input(10px);
+}
+
+.controls__filters {
+   @extend %flex-center;
+   gap: 1rem;
+}
+
+.controls__btn {
+   @extend %transparent;
+   @extend %text-sum-tasks;
+   cursor: pointer;
+
+   &:hover,
+   &:focus {
+      color: var(--filter-task-hover);
+   }
+}
+
+.stats__clear:is(:hover, :focus) {
+   color: var(--filter-task-hover);
+   cursor: pointer;
+}
