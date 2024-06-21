@@ -1,8 +1,10 @@
+// Placeholder for transparent background and border
 %transparent {
    background: transparent;
    border: none;
 }
 
+// Placeholder for text styling common to summary tasks
 %text-sum-tasks {
    padding: 0.5rem 0;
    color: var(--drag-text-color);
@@ -10,6 +12,7 @@
    font-weight: $fw-thick;
 }
 
+// Placeholder for flexbox centering
 %flex-center {
    display: flex;
    justify-content: center;

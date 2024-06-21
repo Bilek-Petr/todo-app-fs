@@ -1,0 +1,344 @@
+@charset "UTF-8";
+/*****************************************************************************
+ * reset
+ *
+ *  Based on Josh CSS reset.  This initializes elements to a
+ *  predictable and repeatable state to make reuse across project simpler.
+ *
+ *****************************************************************************/
+/**
+ * use border-box for all elements
+ */
+*,
+*::before,
+*::after {
+   box-sizing: border-box;
+}
+
+/**
+ * set default margin on everything to 0
+ */
+* {
+   margin: 0;
+}
+
+/**
+ * full height body by default
+ */
+html,
+body {
+   height: 100%;
+}
+
+/**
+ * readable font defaults including proper high-dpi font anti-aliasing
+ */
+body {
+   line-height: 1.5;
+   -webkit-font-smoothing: antialiased;
+}
+
+/**
+ * eliminate single line artifact on img and limit scale so initial display
+ * is not unusually huge for high-dpi images.
+ */
+img,
+picture,
+video,
+canvas,
+svg {
+   display: block;
+   max-width: 100%;
+}
+
+/**
+ * inherit rather than use implicit fonts on form elements
+ */
+input,
+button,
+textarea,
+select {
+   font: inherit;
+}
+
+/**
+ * headings and paragraph should inherit body font and have
+ * no implicit margins.
+ */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+   margin: 0;
+   font: inherit;
+   overflow-wrap: break-word;
+}
+
+/**
+ * limit z-index to within the application layers and do not bleed into
+ * browser supplied layers.
+ */
+#root,
+#__next {
+   isolation: isolate;
+}
+
+/**
+ * eliminate styling on links so they look like normal text by default
+ */
+a {
+   color: currentcolor;
+   text-decoration: none;
+}
+
+ul {
+   padding: 0;
+}
+
+li {
+   list-style-type: none;
+}
+
+.controls__btn,
+.tasks__remove-btn,
+.header__btn-theme {
+   background: transparent;
+   border: none;
+}
+
+.controls__btn,
+.stats,
+footer {
+   padding: 0.5rem 0;
+   color: var(--drag-text-color);
+   font-size: clamp(0.7rem, 3vw, 1rem);
+   font-weight: 700;
+}
+
+input[type='checkbox']::before,
+input[type='checkbox'],
+.controls__filters,
+footer {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+body.theme-light {
+   --body-bg: hsl(236, 33%, 92%);
+   --header-bg: url('/assets/images/bg-mobile-light.jpg');
+   --header-bg-desktop: url('/assets/images/bg-mobile-light.jpg');
+   --heading-color: hsl(0, 0%, 98%);
+   --input-bg: hsl(0, 0%, 98%);
+   --input-color: hsl(234, 39%, 85%);
+   --task-color: hsl(235, 19%, 35%);
+   --complete-task-color: hsl(236, 9%, 61%);
+   --border-bottom-color: hsl(233, 11%, 84%);
+   --btn-border: hsl(233, 11%, 84%);
+   --remove-task-hover: hsl(235, 19%, 35%);
+   --filter-task-hover: hsl(235, 19%, 35%);
+   --drag-text-color: hsl(236, 9%, 61%);
+}
+
+body.theme-dark {
+   --body-bg: hsl(235, 21%, 11%);
+   --header-bg: url('/assets/images/bg-mobile-dark.jpg');
+   --header-bg-desktop: url('/assets/images/bg-desktop-dark.jpg');
+   --heading-color: hsl(236, 33%, 92%);
+   --input-bg: hsl(235, 24%, 19%);
+   --input-color: hsl(234, 39%, 85%);
+   --task-color: hsl(234, 39%, 85%);
+   --complete-task-color: hsl(234, 11%, 52%);
+   --border-bottom-color: hsl(237, 14%, 26%);
+   --btn-border: hsl(234, 11%, 52%);
+   --remove-task-hover: hsl(236, 33%, 92%);
+   --filter-task-hover: hsl(234, 39%, 85%);
+   --drag-text-color: hsl(237, 14%, 26%);
+}
+
+body {
+   font-family: 'Josefin Sans', sans-serif;
+   font-size: 18px;
+   background-color: var(--body-bg);
+}
+
+.wrapper {
+   max-width: 30rem;
+   padding: 3rem 1.5rem;
+   margin: 0 auto;
+}
+
+.header {
+   background-image: var(--header-bg);
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+
+.header__top {
+   display: flex;
+   justify-content: space-between;
+   margin-bottom: 2rem;
+}
+
+.header__title {
+   color: var(--heading-color);
+   font-size: clamp(1.5rem, 3vw, 2rem);
+   font-weight: 700;
+   text-transform: uppercase;
+   letter-spacing: 8px;
+}
+
+.header__btn-theme {
+   cursor: pointer;
+}
+
+.header__input {
+   background-color: var(--input-bg);
+   width: 100%;
+   border: none;
+   border-radius: 10px;
+   padding: 1rem;
+}
+
+.tasks {
+   position: relative;
+   bottom: 4.5rem;
+}
+
+.tasks__item {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   background-color: var(--input-bg);
+   width: 100%;
+   border: none;
+   border-radius: 0px;
+   padding: 1rem;
+   border-bottom: 1px solid var(--body-bg);
+}
+
+.tasks__item:first-of-type {
+   border-radius: 10px 10px 0 0;
+}
+
+.tasks__content {
+   display: flex;
+   align-items: center;
+   gap: 0.5rem;
+}
+
+.tasks__text {
+   padding-top: 0.2rem;
+   font-size: clamp(0.7rem, 3vw, 1rem);
+   font-weight: 700;
+   color: var(--task-color);
+}
+
+.tasks__remove-btn {
+   width: 1.75rem;
+   cursor: pointer;
+}
+
+.tasks__remove-btn svg {
+   padding-top: 0.5rem;
+   fill: var(--remove-task-hover);
+   transition: transform 0.2s ease;
+}
+.tasks__remove-btn svg:hover,
+.tasks__remove-btn svg:focus {
+   transform: scale(1.25);
+}
+
+.stats {
+   display: flex;
+   justify-content: space-between;
+   box-shadow: 0px 9px 3px -4px rgba(0, 0, 0, 0.16);
+   background-color: var(--input-bg);
+   width: 100%;
+   border: none;
+   border-radius: 0px 0px 10px 10px;
+   padding: 1rem;
+}
+
+.controls {
+   margin-top: 2rem;
+   box-shadow: 0px 9px 3px -4px rgba(0, 0, 0, 0.16);
+   background-color: var(--input-bg);
+   width: 100%;
+   border: none;
+   border-radius: 10px;
+   padding: 1rem;
+}
+
+.controls__filters {
+   gap: 1rem;
+}
+
+.controls__btn {
+   cursor: pointer;
+}
+.controls__btn:hover,
+.controls__btn:focus {
+   color: var(--filter-task-hover);
+}
+
+.stats__clear:is(:hover, :focus) {
+   color: var(--filter-task-hover);
+   cursor: pointer;
+}
+
+input[type='checkbox'] {
+   position: relative;
+   width: 1.5rem;
+   height: 1.5rem;
+   appearance: none;
+   -webkit-appearance: none;
+   outline: none;
+   border: 1px solid var(--btn-border);
+   border-radius: 100%;
+   cursor: pointer;
+   transition: all 0.2s ease-in-out;
+}
+
+input[type='checkbox']::before {
+   content: '✓';
+   color: #fff;
+   font-size: 0.75rem;
+   width: 50%;
+   height: 50%;
+   transform: scale(0);
+   position: absolute;
+   z-index: 2;
+   transform: translate(-50%, -50%) scale(0);
+}
+
+input[type='checkbox']::after {
+   content: '';
+   width: 103%;
+   height: 103%;
+   border-radius: inherit;
+   background-image: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+   position: absolute;
+   top: -1;
+   left: -1;
+   opacity: 0;
+}
+
+input[type='checkbox']:checked::before {
+   transform: scale(1);
+}
+
+input[type='checkbox']:checked::after {
+   opacity: 1;
+}
+
+input[type='checkbox']:hover {
+   border-color: transparent;
+   background: linear-gradient(hsl(0, 0%, 98%), hsl(0, 0%, 98%)) padding-box,
+      linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%)) border-box;
+}
+
+/*# sourceMappingURL=output.css.map */

@@ -1,5 +1,4 @@
 const Todo = require('../models/Todo');
-const axios = require('axios');
 
 // GET all todo items
 exports.getTodos = async (req, res) => {

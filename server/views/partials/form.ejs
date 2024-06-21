@@ -1,31 +1,48 @@
-<ul class="tasks">
-   <% todos.forEach(function(todo) { %>
-   <li class="tasks__item" id="<%= todo._id %>">
-      <div class="tasks__content">
-         <input
-            class="tasks__checkbox"
-            type="checkbox"
-            name="task-name"
-            id="<%=todo._id %>"
-         />
-         <span class="tasks__text" contenteditable><%= todo.task %></span>
-      </div>
-   </li>
-   <% }); %>
+<div class="wrapper">
+   <ul class="tasks">
+      <% todos.forEach(function(todo) { %>
+      <li class="tasks__item" id="<%= todo._id %>">
+         <div class="tasks__content">
+            <input
+               class="tasks__checkbox"
+               type="checkbox"
+               name="task-name"
+               id="<%=todo._id %>"
+            />
+            <span class="tasks__text" contenteditable><%= todo.task %></span>
+         </div>
+         <div>
+            <button class="tasks__remove-btn" title="Remove task <%= todo.task %>">
+               <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 18 18"
+                  class="icon"
+               >
+                  <path
+                     d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"
+                  />
+               </svg>
+            </button>
+         </div>
+      </li>
+      <% }); %>
 
-   <div class="stats">
-      <div class="stats__left">
-         <span class="stats__count">4</span>
-         <span>items left</span>
+      <div class="stats">
+         <div class="stats__left">
+            <span class="stats__count">4</span>
+            <span>items left</span>
+         </div>
+         <span class="stats__clear">Clear completed</span>
       </div>
-      <span class="stats__clear">Clear completed</span>
-   </div>
 
-   <div class="controls">
-      <div class="controls__filters">
-         <button class="controls__btn" id="all" type="button">All</button>
-         <button class="controls__btn" id="active" type="button">Active</button>
-         <button class="controls__btn" id="completed" type="button">Completed</button>
+      <div class="controls">
+         <div class="controls__filters">
+            <button class="controls__btn" id="all" type="button">All</button>
+            <button class="controls__btn" id="active" type="button">Active</button>
+            <button class="controls__btn" id="completed" type="button">Completed</button>
+         </div>
       </div>
-   </div>
-</ul>
+   </ul>
+</div>

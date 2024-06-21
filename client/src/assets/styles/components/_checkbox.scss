@@ -1,4 +1,3 @@
-//checkbox
 input[type='checkbox'] {
    position: relative;
    width: 1.5rem;
@@ -9,7 +8,6 @@ input[type='checkbox'] {
    border: 1px solid var(--btn-border);
    border-radius: 100%;
    cursor: pointer;
-   transition: all 0.2s ease-in-out;
    @extend %flex-center;
 }
 
@@ -22,32 +20,54 @@ input[type='checkbox']::before {
    transform: scale(0);
    position: absolute;
    z-index: 2;
-   transform: translate(-50%, -50%) scale(0);
+   right: 0px;
+   bottom: 0px;
    @extend %flex-center;
 }
 
 input[type='checkbox']::after {
    content: '';
-   width: 103%; //due to weird gap between inner part and border-color
-   height: 103%;
-   border-radius: inherit;
-   background-image: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+   width: calc(100% - 2px); /* Adjusted to fit within the border */
+   height: calc(100% - 2px);
+   background-color: var(--input-bg);
    position: absolute;
-   top: -1;
-   left: -1;
-   opacity: 0;
+   top: 1px;
+   left: 1px;
+   border-radius: 100%;
+   z-index: 1;
+   transition: all 0.3s ease;
+}
+
+input[type='checkbox']:hover::after {
+   background-color: transparent;
 }
 
 input[type='checkbox']:checked::before {
-   transform: scale(1);
+   transform: translate(-50%, -50%) scale(1);
+}
+
+input[type='checkbox']:checked {
+   background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%)) border-box;
+   border-color: transparent;
 }
 
 input[type='checkbox']:checked::after {
-   opacity: 1;
+   background-color: transparent;
 }
 
-input[type='checkbox']:hover {
+input[type='checkbox']:not(:checked):hover {
    border-color: transparent;
-   background: linear-gradient(hsl(0, 0%, 98%), hsl(0, 0%, 98%)) padding-box,
-      linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%)) border-box;
+   background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%)) border-box;
+}
+
+input[type='checkbox']:not(:checked):hover::after {
+   content: '';
+   width: calc(100% - 2px); /* Adjusted to fit within the border */
+   height: calc(100% - 2px);
+   background-color: var(--input-bg);
+   position: absolute;
+   top: 1px;
+   left: 1px;
+   border-radius: inherit;
+   z-index: 1;
 }

@@ -9,7 +9,7 @@ const app = express();
 
 const todoRoutes = require('./routes/todoRoutes');
 const { getTodosFromDB } = require('./api');
-const { fetchTodos } = require('./middleware/modifyTodos');
+const { fetchTodos } = require('./middlewares/modifyTodos');
 
 const PORT = process.env.PORT || 3000;
 
@@ -18,7 +18,7 @@ connectDB();
 
 // Middleware
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../client/public')));
 
 // EJS Setup
 app.engine('ejs', ejsMate);

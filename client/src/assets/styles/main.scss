@@ -1,9 +1,3 @@
 @import './utilities/index';
 @import './base/index';
 @import './components/index';
-
-@include apply-theme($theme-light);
-
-[data-theme='theme-dark'] {
-   @include apply-theme($theme-dark);
-}

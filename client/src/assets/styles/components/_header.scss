@@ -25,5 +25,10 @@
 
 // HEADER INPUT
 .header__input {
+   color: var(--task-color);
    @include custom-input(10px);
+}
+
+.header__input:focus {
+   outline: 1px solid var(--task-color);
 }

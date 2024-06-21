@@ -4,8 +4,12 @@
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>My Website</title>
+      <link
+         href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+         rel="stylesheet"
+      />
    </head>
-   <body>
+   <body class="theme-light">
       <div class="container">
          <!-- HEADER START -->
          <%- include('partials/header') %>
@@ -22,9 +26,7 @@
 
    <% if (process.env.NODE_ENV === 'development') { %>
    <script type="module" src="http://localhost:5173/src/index.js"></script>
-
    <% } else { %>
-   <script type="module" src="http://localhost:5173/src/index.js"></script>
-
+   <script type="module" src="/src/index.js"></script>
    <% } %>
 </html>
