@@ -1,6 +1,8 @@
+import { API_URL } from '../main';
+
 export async function fetchTodos() {
    try {
-      const response = await fetch('http://localhost:3000/tasks');
+      const response = await fetch(`${API_URL}`);
       if (!response.ok) {
          throw new Error('Failed to fetch tasks');
       }

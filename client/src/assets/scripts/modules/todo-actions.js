@@ -1,4 +1,6 @@
 import { fetchTodos } from './api';
+import { API_URL } from '../main';
+import { countTasks } from './utility';
 
 const taskInput = document.querySelector('.header__input');
 
@@ -13,7 +15,7 @@ async function handleTaskInput(e) {
    console.log('Sending todo:', todo);
 
    try {
-      const response = await fetch('http://localhost:3000/tasks', {
+      const response = await fetch(`${API_URL}`, {
          method: 'POST',
          headers: {
             'Content-Type': 'application/json',
@@ -31,6 +33,7 @@ async function handleTaskInput(e) {
       // Fetch updated todos and render them
       const todos = await fetchTodos();
       renderTodos(todos);
+      countTasks();
    } catch (error) {
       console.error('Error:', error);
    }
@@ -71,15 +74,13 @@ const tasksContainer = document.querySelector('.tasks');
 
 tasksContainer.addEventListener('click', async (e) => {
    if (e.target.classList.contains('delete-icon')) {
+      console.dir(e.target);
       const taskId = e.target.closest('.tasks__item').id;
       console.log(taskId);
       try {
-         console.log(`http://localhost:3000/tasks/${taskId}`);
-         const response = fetch(`http://localhost:3000/tasks/${taskId}`, {
+         const response = await fetch(`${API_URL}/${taskId}`, {
             method: 'DELETE',
          });
-
-         console.log(response);
 
          if (!response.ok) {
             throw new Error('Failed to delete task');
@@ -88,6 +89,7 @@ tasksContainer.addEventListener('click', async (e) => {
          console.log('Task deleted successfully');
          const todos = await fetchTodos();
          renderTodos(todos);
+         countTasks();
       } catch (error) {
          console.error(`Error: ${error}`);
       }
