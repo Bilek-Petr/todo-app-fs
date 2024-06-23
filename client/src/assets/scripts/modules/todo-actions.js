@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const input = document.querySelector('.header__input');
 
 input.addEventListener('keyup', (e) => {
@@ -29,3 +30,8 @@ input.addEventListener('keyup', (e) => {
          });
    }
 });
+=======
+
+
+ 
+>>>>>>> e5c477e7fd53b744316dd1f64c35ab1b3c56d841
