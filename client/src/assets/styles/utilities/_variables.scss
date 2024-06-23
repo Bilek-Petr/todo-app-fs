@@ -13,6 +13,7 @@ $theme-light: (
    'remove-task-hover': hsl(235, 19%, 35%),
    'filter-task-hover': hsl(235, 19%, 35%),
    'drag-text-color': hsl(236, 9%, 61%),
+   'clr-error': hsl(348, 82%, 55%),
 );
 
 // Dark Theme Variables
@@ -30,6 +31,7 @@ $theme-dark: (
    'remove-task-hover': hsl(236, 33%, 92%),
    'filter-task-hover': hsl(234, 39%, 85%),
    'drag-text-color': hsl(238, 10%, 50%),
+   'clr-error': hsl(0, 98%, 50%),
 );
 
 // Typography
