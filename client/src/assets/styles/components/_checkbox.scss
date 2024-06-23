@@ -35,7 +35,6 @@ input[type='checkbox']::after {
    left: 1px;
    border-radius: 100%;
    z-index: 1;
-   transition: all 0.3s ease;
 }
 
 input[type='checkbox']:hover::after {

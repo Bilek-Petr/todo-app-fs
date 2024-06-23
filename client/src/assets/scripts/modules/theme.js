@@ -1,7 +1,8 @@
 const body = document.body;
 const themeIcon = document.querySelector('.themeIcon');
 
-export const setThemeIcon = () => {
+export const setTheme = () => {
+   body.classList.add('theme-light');
    if (body.classList.contains('theme-dark')) {
       themeIcon.src = '/assets/images/icon-moon.svg';
    } else {
@@ -12,5 +13,4 @@ export const setThemeIcon = () => {
 export const toggleTheme = () => {
    body.classList.toggle('theme-dark');
    body.classList.toggle('theme-light');
-   setThemeIcon();
 };

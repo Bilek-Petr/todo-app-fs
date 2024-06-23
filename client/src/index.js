@@ -1,10 +1,16 @@
 import './assets/scripts/main.js';
 import './assets/styles/main.scss';
 
-import { setThemeIcon } from './assets/scripts/modules/theme.js';
-const body = document.body;
+import { setTheme } from './assets/scripts/modules/theme.js';
+import { renderTodos } from './assets/scripts/modules/todo-actions.js';
+import { fetchTodos } from './assets/scripts/modules/api.js';
 
-document.addEventListener('DOMContentLoaded', () => {
-   body.classList.add('theme-light');
-   setThemeIcon();
+document.addEventListener('DOMContentLoaded', async () => {
+   try {
+      setTheme();
+      const todos = await fetchTodos();
+      renderTodos(todos);
+   } catch (error) {
+      console.error(`Error fetching todos: ${error.message}`);
+   }
 });
