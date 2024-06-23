@@ -50,3 +50,24 @@ export async function deleteTodo(taskId) {
       throw error;
    }
 }
+
+export async function updateTodo(taskId, updatedData) {
+   try {
+      const response = await fetch(`${API_URL}/${taskId}`, {
+         method: 'PUT',
+         headers: {
+            'Content-Type': 'application/json',
+         },
+         body: JSON.stringify(updatedData),
+      });
+
+      if (!response.ok) {
+         throw new Error('Failed to update task');
+      }
+
+      return await response.json();
+   } catch (error) {
+      console.error('Error updating task:', error);
+      throw error;
+   }
+}

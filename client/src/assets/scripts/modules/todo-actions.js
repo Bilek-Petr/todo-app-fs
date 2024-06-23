@@ -1,4 +1,4 @@
-import { fetchTodos, createTodo, deleteTodo } from './api';
+import { fetchTodos, createTodo, deleteTodo, updateTodo } from './api';
 import { renderTodos } from './render';
 import { countTasks } from './utility';
 
@@ -40,6 +40,30 @@ tasksContainer.addEventListener('click', async (e) => {
          updateTodos();
       } catch (error) {
          console.error('Error:', error.message);
+      }
+   }
+});
+
+// Task Update
+tasksContainer.addEventListener('input', async (e) => {
+   if (e.target.classList.contains('tasks__text')) {
+      const taskId = e.target.closest('.tasks__item').id;
+      const newTask = e.target.textContent.trim();
+
+      if (newTask.length === 0) {
+         //select task item parent (perhaps overkill but I couldn't declare it directly as its being generated)
+         e.target.parentNode.parentNode.classList.add('invalid-input');
+         console.warn('Task description cannot be empty');
+         return;
+      } else {
+         e.target.parentNode.parentNode.classList.remove('invalid-input');
+      }
+
+      try {
+         await updateTodo(taskId, { task: newTask });
+         console.log('Task updated successfully');
+      } catch (error) {
+         console.error('Error updating task:', error.message);
       }
    }
 });
