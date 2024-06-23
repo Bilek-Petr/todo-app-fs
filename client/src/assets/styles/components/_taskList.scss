@@ -17,16 +17,24 @@
 }
 
 .tasks__content {
-   display: flex;
+   display: grid;
+   grid-template-columns: 2rem 1fr;
    align-items: center;
-   gap: 0.5rem;
+   gap: 0.35rem;
+   max-width: 100%;
 }
 
 .tasks__text {
+   display: inline-block;
    padding-top: 0.2rem;
-   font-size: clamp(0.7rem, 3vw, 1rem);
+   font-size: clamp(0.85rem, 3vw, 1rem);
    font-weight: 700;
    color: var(--task-color);
+   cursor: pointer;
+   /* Handle long words without spaces */
+   overflow-wrap: break-word;
+   word-break: break-word;
+   hyphens: auto;
 }
 
 .tasks__remove-btn {
