@@ -1,9 +1,17 @@
 import { fetchTodos, createTodo, deleteTodo, updateTodo } from './api';
 import { renderTodos } from './render';
-import { countTasks } from './utility';
+import { countTasks, showInvalidInput, clearInvalidInput } from './utility';
 
 const taskInput = document.querySelector('.header__input');
 const tasksContainer = document.querySelector('.tasks');
+
+//updating todos to render innerHTML
+export const updateTodos = async () => {
+   console.log('Updating todos...');
+   const todos = await fetchTodos();
+   renderTodos(todos);
+   countTasks();
+};
 
 // Task Create
 const handleTaskInput = async (e) => {
@@ -22,13 +30,6 @@ const handleTaskInput = async (e) => {
    }
 };
 
-//updating todos to render innerHTML
-export const updateTodos = async () => {
-   const todos = await fetchTodos();
-   renderTodos(todos);
-   countTasks();
-};
-
 // Task Delete
 tasksContainer.addEventListener('click', async (e) => {
    if (e.target.classList.contains('delete-icon')) {
@@ -44,36 +45,47 @@ tasksContainer.addEventListener('click', async (e) => {
    }
 });
 
-// Task Update
-tasksContainer.addEventListener('input', async (e) => {
-   if (e.target.classList.contains('tasks__text')) {
-      const taskId = e.target.closest('.tasks__item').id;
-      const newTask = e.target.textContent.trim();
+// Function to handle changes in task text content
+async function handleTaskTextChange(taskTextElement) {
+   const taskId = taskTextElement.closest('.tasks__item').id;
+   let newTask = taskTextElement.textContent.trim();
 
-      if (newTask.length === 0) {
-         //select task item parent (perhaps overkill but I couldn't declare it directly as its being generated)
-         e.target.parentNode.parentNode.classList.add('invalid-input');
-         console.warn('Task description cannot be empty');
-         return;
-      } else {
-         e.target.parentNode.parentNode.classList.remove('invalid-input');
-      }
-
-      try {
-         await updateTodo(taskId, { task: newTask });
-         console.log('Task updated successfully');
-      } catch (error) {
-         console.error('Error updating task:', error.message);
-      }
+   // Enforce maximum length of 100 characters
+   if (newTask.length > 100) {
+      newTask = newTask.slice(0, 100);
+      taskTextElement.textContent = newTask;
    }
-});
+
+   // Validate if task description is empty
+   const isEmpty = newTask.length === 0;
+   if (isEmpty) {
+      showInvalidInput(taskTextElement);
+      console.warn('Task description cannot be empty');
+      return;
+   } else {
+      clearInvalidInput(taskTextElement);
+   }
+
+   try {
+      await updateTodo(taskId, { task: newTask });
+      console.log('Task updated successfully');
+   } catch (error) {
+      console.error('Error updating task:', error.message);
+   }
+}
 
 //----------------------------------------------------------------
 //LISTENERS
 //----------------------------------------------------------------
 taskInput.addEventListener('keyup', (e) => {
-   if (e.code === 'Enter') {
+   if (e.code === 'Enter' || e.code === 'NumpadEnter') {
       handleTaskInput(e);
       taskInput.value = '';
+   }
+});
+
+tasksContainer.addEventListener('input', async (e) => {
+   if (e.target.classList.contains('tasks__text')) {
+      handleTaskTextChange(e.target);
    }
 });

@@ -65,3 +65,24 @@ exports.deleteTodo = async (req, res) => {
       res.status(500).send('Server Error');
    }
 };
+
+// GET FILTERED TODOS
+exports.getFilteredTodos = async (req, res) => {
+   try {
+      const { completed } = req.query;
+      let filter = {};
+
+      if (completed === 'true') {
+         filter.completed = true;
+      }
+      if (completed === 'false') {
+         filter.completed = false;
+      }
+
+      const todos = await Todo.find(filter);
+      res.json(todos);
+   } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+   }
+};

@@ -8,7 +8,6 @@ const ejsMate = require('ejs-mate');
 const app = express();
 
 const todoRoutes = require('./routes/todoRoutes');
-const { getTodosFromDB } = require('./api');
 const { fetchTodos } = require('./middlewares/modifyTodos');
 
 const PORT = process.env.PORT || 3000;

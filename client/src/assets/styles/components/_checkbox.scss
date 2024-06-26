@@ -70,3 +70,9 @@ input[type='checkbox']:not(:checked):hover::after {
    border-radius: inherit;
    z-index: 1;
 }
+
+input[type='checkbox']:checked + .tasks__text {
+   color: var(--complete-task-color);
+   text-decoration: line-through;
+   opacity: 0.8;
+}

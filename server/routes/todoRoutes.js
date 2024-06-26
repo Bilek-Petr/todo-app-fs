@@ -5,10 +5,14 @@ const {
    createTodo,
    updateTodo,
    deleteTodo,
+   getFilteredTodos,
 } = require('../controllers/todoController');
 
 // GET all todo items
 router.get('/', getTodos);
+
+// GET filtered todos
+router.get('/filtered', getFilteredTodos);
 
 // CREATE a new todo item
 router.post('/', createTodo);
