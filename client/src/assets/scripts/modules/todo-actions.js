@@ -1,6 +1,7 @@
 import { fetchTodos, createTodo, deleteTodo, updateTodo } from './api';
 import { renderTodos } from './render';
 import { countTasks, showInvalidInput, clearInvalidInput } from './utility';
+import { currentFilter, filterTodos } from './states';
 
 const taskInput = document.querySelector('.header__input');
 const tasksContainer = document.querySelector('.tasks');
@@ -24,7 +25,9 @@ const handleTaskInput = async (e) => {
    try {
       await createTodo(todo);
       console.log('Task created successfully');
-      updateTodos();
+
+      //ensure it stays on filtered state, instead of seeing all when modified
+      await filterTodos(currentFilter);
    } catch (error) {
       console.error('Error:', error.message);
    }
@@ -38,7 +41,9 @@ tasksContainer.addEventListener('click', async (e) => {
       try {
          await deleteTodo(taskId);
          console.log('Task deleted successfully');
-         updateTodos();
+
+         //ensure it stays on filtered state, instead of seeing all when modified
+         await filterTodos(currentFilter);
       } catch (error) {
          console.error('Error:', error.message);
       }
