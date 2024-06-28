@@ -11,6 +11,11 @@
 
    @include custom-input(0px);
    border-bottom: 1px solid var(--body-bg);
+   transition: transform 0.3s ease-in-out;
+}
+
+.tasks__item.dragging {
+   opacity: 0.5; /* Reduce opacity while dragging */
 }
 
 .tasks__item:first-of-type {
@@ -34,7 +39,7 @@
    overflow-wrap: break-word;
    word-break: break-word;
    hyphens: auto;
-   transition: color 0.3s ease-in-out;
+   transition: color 0.2s ease-in-out;
 
    &:is(:hover, :focus, :focus-visible) {
       background-color: var(--clr-editing);

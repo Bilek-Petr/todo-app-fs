@@ -1,7 +1,7 @@
 import './modules/utility.js';
-import './modules/todo-actions.js';
-import './modules/api.js';
-import './modules/states.js';
+import './todo-actions.js';
+import './api.js';
+import './states.js';
 
 import { toggleTheme } from './modules/theme.js';
 

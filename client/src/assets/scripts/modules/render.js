@@ -1,4 +1,4 @@
-import { updateTodo } from './api';
+import { updateTodo } from '../api';
 
 /**
  * Renders a list of todos in the DOM.
@@ -17,9 +17,10 @@ export function renderTodos(todos) {
 function createTodoElement(todo) {
    const li = document.createElement('li');
    li.className = 'tasks__item';
+   li.draggable = true;
    li.id = todo._id;
 
-   //on render if it's completed already
+   //set its class as completed if it's completed already in DB
    if (todo.completed) {
       li.classList.add('completed');
    }
@@ -41,7 +42,7 @@ function createTodoElement(todo) {
       </div>
    `;
 
-   //    Add checkbox change event listener
+   //Add a checkbox listener, should be it's own function but it's ok for this project.
    const checkbox = li.querySelector('.tasks__checkbox');
    checkbox.addEventListener('change', async () => {
       console.log(`Checkbox for task ${todo._id} changed to ${checkbox.checked}`);
