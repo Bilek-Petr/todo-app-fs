@@ -4,7 +4,7 @@ import vue from '@vitejs/plugin-vue';
 export default defineConfig({
    plugins: [vue()],
    build: {
-      outDir: '../dist', // Output directory for the build
+      outDir: '../client/public', // Output directory for the build
       rollupOptions: {
          input: {
             main: './src/index.js', // Adjust this path to your actual entry point
