@@ -110,7 +110,7 @@ li {
 .controls__btn, .stats, footer {
   padding: 0.5rem 0;
   color: var(--drag-text-color);
-  font-size: clamp(0.7rem, 3vw, 1rem);
+  font-size: clamp(0.85rem, 3vw, 1rem);
   font-weight: 700;
 }
 
@@ -120,8 +120,21 @@ input[type=checkbox]::before, input[type=checkbox], .controls__filters, footer {
   align-items: center;
 }
 
-.error {
+.header .error {
+  color: var(--clr-error) !important;
+  opacity: 0.9;
+}
+
+.invalid-input::before {
+  content: "Can't be empty.";
+  font-weight: 400;
+  font-style: italic;
+  width: 10rem;
   color: var(--clr-error);
+  position: absolute;
+  left: 3.4rem;
+  text-decoration: solid underline 1px;
+  text-underline-offset: 4px;
 }
 
 body.theme-light {
@@ -138,7 +151,8 @@ body.theme-light {
   --remove-task-hover: hsl(235, 19%, 35%);
   --filter-task-hover: hsl(235, 19%, 35%);
   --drag-text-color: hsl(236, 9%, 61%);
-  --clr-error: hsl(348, 95%, 46%);
+  --clr-error: hsl(348, 91%, 49%);
+  --clr-editing: hsl(0, 4%, 91%);
 }
 
 body.theme-dark {
@@ -155,7 +169,8 @@ body.theme-dark {
   --remove-task-hover: hsl(236, 33%, 92%);
   --filter-task-hover: hsl(234, 39%, 85%);
   --drag-text-color: hsl(238, 10%, 50%);
-  --clr-error: hsl(348, 92%, 67%);
+  --clr-error: hsl(0, 98%, 50%);
+  --clr-editing: hsl(237, 13%, 33%);
 }
 
 body {
@@ -168,10 +183,6 @@ body {
   max-width: 30rem;
   padding: 3rem 1.5rem;
   margin: 0 auto;
-}
-
-* {
-  transition: all 0.3s ease;
 }
 
 .header {
@@ -216,7 +227,7 @@ body {
 }
 
 .character__counter {
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: var(--task-color);
   opacity: 0.5;
   position: absolute;
@@ -224,12 +235,13 @@ body {
   top: 62.5%;
 }
 
-.tasks {
+.wrapper:has(.tasks) {
   position: relative;
   bottom: 4.5rem;
 }
 
 .tasks__item {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -239,6 +251,11 @@ body {
   border-radius: 0px;
   padding: 1rem;
   border-bottom: 1px solid var(--body-bg);
+  transition: transform 0.3s ease-in-out;
+}
+
+.tasks__item.dragging {
+  opacity: 0.5; /* Reduce opacity while dragging */
 }
 
 .tasks__item:first-of-type {
@@ -246,16 +263,29 @@ body {
 }
 
 .tasks__content {
-  display: flex;
+  display: grid;
+  grid-template-columns: 2rem 1fr;
   align-items: center;
-  gap: 0.5rem;
+  max-width: 100%;
 }
 
 .tasks__text {
-  padding-top: 0.2rem;
-  font-size: clamp(0.7rem, 3vw, 1rem);
+  padding: 0.2rem 0.5rem 0 0.5rem;
+  font-size: clamp(0.85rem, 3vw, 1rem);
   font-weight: 700;
   color: var(--task-color);
+  cursor: pointer;
+  /* Handle long words without spaces */
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+  transition: color 0.2s ease-in-out;
+}
+.tasks__text:is(:hover, :focus, :focus-visible) {
+  background-color: var(--clr-editing);
+  opacity: 0.9;
+  border-radius: 5px;
+  outline: none;
 }
 
 .tasks__remove-btn {
@@ -274,6 +304,7 @@ body {
 .stats {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   box-shadow: 0px 9px 3px -4px rgba(0, 0, 0, 0.16);
   background-color: var(--input-bg);
   width: 100%;
@@ -296,6 +327,7 @@ body {
 
 .controls__filters {
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .controls__btn {
@@ -345,7 +377,6 @@ input[type=checkbox]::after {
   left: 1px;
   border-radius: 100%;
   z-index: 1;
-  transition: all 0.3s ease;
 }
 
 input[type=checkbox]:hover::after {
@@ -380,6 +411,12 @@ input[type=checkbox]:not(:checked):hover::after {
   left: 1px;
   border-radius: inherit;
   z-index: 1;
+}
+
+input[type=checkbox]:checked + .tasks__text {
+  color: var(--complete-task-color);
+  text-decoration: line-through;
+  opacity: 0.8;
 }
 
 /*# sourceMappingURL=output.css.map */

@@ -1,19 +1,15 @@
 import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
 
 export default defineConfig({
+   plugins: [vue()],
    build: {
-      outDir: 'public',
-      emptyOutDir: true,
+      outDir: '../dist', // Output directory for the build
       rollupOptions: {
-         input: '/src/index.js', // Ensure this points to your main JS file
+         input: {
+            main: './src/index.js', // Adjust this path to your actual entry point
+         },
       },
    },
-   server: {
-      port: 5173,
-   },
-   css: {
-      preprocessorOptions: {
-         scss: {},
-      },
-   },
+   publicDir: 'client/public', // Directory to serve as the public folder
 });

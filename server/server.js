@@ -1,10 +1,10 @@
+// server/server.js
 const dotenv = require('dotenv');
 dotenv.config();
 
 const express = require('express');
 const connectDB = require('./db');
 const path = require('path');
-const ejsMate = require('ejs-mate');
 const app = express();
 
 const todoRoutes = require('./routes/todoRoutes');
@@ -19,14 +19,9 @@ connectDB();
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../client/public')));
 
-// EJS Setup
-app.engine('ejs', ejsMate);
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
-
 // Routes
-app.get('/', fetchTodos, (req, res) => {
-   res.render('index', { todos: req.todos });
+app.get('/', (req, res) => {
+   res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });
 
 app.use('/tasks', todoRoutes);
