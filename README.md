@@ -32,8 +32,8 @@ Page ain't live as backend side is involved.
    ✔ See hover states for all interactive elements on the page
    
    ✔ Bonus: Drag and drop to reorder items on the list
-   
-     ✔ Bonus: Build this project as a full-stack application
+
+   ✔ Bonus: Build this project as a full-stack application
    
    ✔ As a bonus I've decided to limit input length and item edit length
 
