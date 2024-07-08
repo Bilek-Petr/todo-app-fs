@@ -1,6 +1,16 @@
 # Basic fullstack todo app
 
 The task is from [Frontend Mentor](https://www.frontendmentor.io/challenges/todo-app-Su1_KokOW)
+Page ain't live as backend side is involved.
+
+## Used
+<p align="left">
+  <img src="https://img.icons8.com/color/48/000000/javascript.png" alt="JavaScript"/>
+  <img src="https://img.icons8.com/color/48/000000/sass.png" alt="Sass"/>
+     <img src="https://img.icons8.com/?size=48&id=bosfpvRzNOG8&format=png&color=000000" alt="mongoDB"/>
+  <img src="https://img.icons8.com/?size=48&id=dJjTWMogzFzg&format=png" alt="Vite"/>
+</p>
+
 
 ## Users should be able to:
 
