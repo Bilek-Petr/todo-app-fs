@@ -41,7 +41,7 @@ Page ain't live as backend side is involved.
 - in root directory run command npm start, which starts both backend and frontend server.
 
 ## Video of app
-[![Watch the video of app here](https://player.vimeo.com/video/995171717?h=7546351f88)]
+[Watch the video of app here](https://img.shields.io/badge/Watch%20Video%20On-Vimeo-blue?logo=vimeo)](https://vimeo.com/995171717)
 
 or if you don't want to watch
 
