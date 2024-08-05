@@ -40,7 +40,10 @@ Page ain't live as backend side is involved.
 ## How to use the App
 - in root directory run command npm start, which starts both backend and frontend server.
 
-## Screen of stages
+## Video of app
+[![Watch the video of app here](https://player.vimeo.com/video/995171717?h=7546351f88)]
+
+or if you don't want to watch
+
 <img width="845" alt="Untitled" src="https://github.com/Bilek-Petr/todo-app-fs/assets/173056555/207f925f-eb0a-4413-8044-8465ae1c5cbf">
-<iframe title="vimeo-player" src="https://player.vimeo.com/video/995171717?h=7546351f88" width="640" height="360" frameborder="0"    allowfullscreen></iframe>
 
